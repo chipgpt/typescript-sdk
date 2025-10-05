@@ -508,12 +508,12 @@ describe('tool()', () => {
     /***
      * Test: Tool disable, enable, and remove via tool instance
      */
-    test("should manage tool when using tool instance", async () => {
+    test('should manage tool when using tool instance', async () => {
         const mcpServer = new McpServer({
-            name: "test server",
-            version: "1.0",
+            name: 'test server',
+            version: '1.0'
         });
-    
+
         // Register initial tool
         const tool = mcpServer.tool('test', async () => ({
             content: [
@@ -523,34 +523,34 @@ describe('tool()', () => {
                 }
             ]
         }));
-    
+
         expect(mcpServer['_registeredTools'].test).toBeDefined();
-    
+
         // Now disable the tool
         tool.disable();
-    
+
         expect(mcpServer['_registeredTools'].test.enabled).toBe(false);
-    
+
         // Now enable the tool
         tool.enable();
-    
+
         expect(mcpServer['_registeredTools'].test.enabled).toBe(true);
-    
+
         // Now delete the tool
         tool.remove();
-    
+
         expect(mcpServer['_registeredTools'].test).toBeUndefined();
     });
-  
+
     /***
      * Test: Tool disable, enable, and remove via server instance
      */
-    test("should manage tool when using server instance", async () => {
+    test('should manage tool when using server instance', async () => {
         const mcpServer = new McpServer({
-            name: "test server",
-            version: "1.0",
+            name: 'test server',
+            version: '1.0'
         });
-    
+
         // Register initial tool
         mcpServer.tool('test', async () => ({
             content: [
@@ -560,22 +560,22 @@ describe('tool()', () => {
                 }
             ]
         }));
-    
+
         expect(mcpServer['_registeredTools'].test).toBeDefined();
-    
+
         // Now disable the tool
-        mcpServer.disableTool("test");
-    
+        mcpServer.disableTool('test');
+
         expect(mcpServer['_registeredTools'].test.enabled).toBe(false);
-    
+
         // Now enable the tool
-        mcpServer.enableTool("test");
-    
+        mcpServer.enableTool('test');
+
         expect(mcpServer['_registeredTools'].test.enabled).toBe(true);
-    
+
         // Now delete the tool
-        mcpServer.removeTool("test");
-    
+        mcpServer.removeTool('test');
+
         expect(mcpServer['_registeredTools'].test).toBeUndefined();
     });
 

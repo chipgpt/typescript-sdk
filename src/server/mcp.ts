@@ -825,8 +825,8 @@ export class McpServer {
         if (tool) {
             tool.enable();
         }
-    };
-  
+    }
+
     /**
      * Disables a tool from the server by name.
      * Does nothing if the tool is not registered.
@@ -836,8 +836,8 @@ export class McpServer {
         if (tool) {
             tool.disable();
         }
-    };
-  
+    }
+
     /**
      * Updates a tool from the server by name.
      * Does nothing if the tool is not registered.
@@ -847,8 +847,8 @@ export class McpServer {
         if (tool) {
             tool.update(updates);
         }
-    };
-  
+    }
+
     /**
      * Removes a tool from the server by name.
      * Does nothing if the tool is not registered.
@@ -858,7 +858,7 @@ export class McpServer {
         if (tool) {
             tool.update({ name: null });
         }
-    };
+    }
 
     /**
      * Registers a zero-argument prompt `name`, which will run the given function when the client calls it.
@@ -1063,16 +1063,16 @@ export type ToolCallback<Args extends undefined | ZodRawShape = undefined> = Arg
     : (extra: RequestHandlerExtra<ServerRequest, ServerNotification>) => CallToolResult | Promise<CallToolResult>;
 
 export type ToolUpdates<InputArgs extends ZodRawShape, OutputArgs extends ZodRawShape> = {
-    name?: string | null,
-    title?: string,
-    description?: string,
-    paramsSchema?: InputArgs,
-    outputSchema?: OutputArgs,
-    annotations?: ToolAnnotations,
-    _meta?: Record<string, unknown>,
-    callback?: ToolCallback<InputArgs>,
-    enabled?: boolean
-}
+    name?: string | null;
+    title?: string;
+    description?: string;
+    paramsSchema?: InputArgs;
+    outputSchema?: OutputArgs;
+    annotations?: ToolAnnotations;
+    _meta?: Record<string, unknown>;
+    callback?: ToolCallback<InputArgs>;
+    enabled?: boolean;
+};
 
 export type RegisteredTool = {
     title?: string;
@@ -1085,10 +1085,8 @@ export type RegisteredTool = {
     enabled: boolean;
     enable(): void;
     disable(): void;
-    update<InputArgs extends ZodRawShape, OutputArgs extends ZodRawShape>(
-        updates: ToolUpdates<InputArgs, OutputArgs>
-    ): void
-    remove(): void
+    update<InputArgs extends ZodRawShape, OutputArgs extends ZodRawShape>(updates: ToolUpdates<InputArgs, OutputArgs>): void;
+    remove(): void;
 };
 
 const EMPTY_OBJECT_JSON_SCHEMA = {
